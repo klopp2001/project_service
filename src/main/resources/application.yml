@@ -1,0 +1,18 @@
+
+spring:
+  application:
+    name:project_service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/projects_service # Replace 'localhost:5432' with your PostgreSQL server address and port, and 'mydatabase' with your database name
+    username: postgres # Replace with your PostgreSQL username
+    password: admin # Replace with your PostgreSQL password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update # Options: none, update, create, create-drop, validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true # Set to true to log SQL statements
+server:
+  port: 8081
