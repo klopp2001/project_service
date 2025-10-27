@@ -26,7 +26,7 @@ public class Projects {
     private String description;
 
     @Column
-    Long owner_id;
+    Long ownerId;
 
     @Column
     Timestamp createdAt;

@@ -21,8 +21,11 @@ public class ProjectMembers {
     Projects project;
 
     @Column
+    Long userId;
+
+    @Column
     String role;
 
     @Column
-    Timestamp added_at;
+    Timestamp addedAt;
 }
