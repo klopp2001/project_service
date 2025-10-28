@@ -2,6 +2,24 @@
 spring:
   application:
     name:project_service
+
+  kafka:
+    consumer:
+      group-id: project-creator
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+    producer:
+      acks: all
+      retries: 3
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+      properties:
+        spring.json.add.type.headers: true
+    admin:
+      auto-create: true
   datasource:
     url: jdbc:postgresql://localhost:5432/projects_service # Replace 'localhost:5432' with your PostgreSQL server address and port, and 'mydatabase' with your database name
     username: postgres # Replace with your PostgreSQL username

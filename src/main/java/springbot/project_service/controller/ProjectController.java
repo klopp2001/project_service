@@ -9,7 +9,7 @@ import springbot.project_service.dto.CreateProjectDTO;
 import springbot.project_service.kafka.producer.ProjectEventProducer;
 import springbot.project_service.service.ProjectService;
 
-@RestController("/project")
+@RestController()
 public class ProjectController {
     private final ProjectEventProducer projectEventProducer;
 

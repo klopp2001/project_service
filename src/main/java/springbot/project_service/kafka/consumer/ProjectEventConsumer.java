@@ -17,17 +17,18 @@ public class ProjectEventConsumer {
         this.projectEventProducer = projectEventProducer;
     }
 
-    @KafkaListener(topics = "project", groupId = "project-creator")
-    public void consume(ProjectEventDto projectEventDto) {
-        if (projectEventDto.getEventType().equals("created")) {
-            projectService.createProject(projectEventDto.getName(), projectEventDto.getKey(), projectEventDto.getOwnerId());
+    @KafkaListener(topics = "project.created", groupId = "project-creator")
+    public void consumeProjectCreated(ProjectEventDto projectEventDto) {
+        projectService.createProject(projectEventDto.getName(), projectEventDto.getKey(), projectEventDto.getOwnerId());
 
-            projectEventProducer.sendNotification(new NotificationEventDto(projectEventDto.getOwnerId(),
-                    "project created"));
-        }
-
+        projectEventProducer.sendNotification(new NotificationEventDto(projectEventDto.getOwnerId(),
+                "{\"payload\": \" created " + projectEventDto.getName() +"\"}" ));
     }
 
+    @KafkaListener(topics = "project.user-added", groupId = "project-creator")
+    public void consumeUserAdded(ProjectEventDto projectEventDto) {
+
+    }
 
 
 }

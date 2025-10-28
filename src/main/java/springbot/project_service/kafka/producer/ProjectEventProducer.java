@@ -16,6 +16,10 @@ public class ProjectEventProducer {
         projectKafkaTemplate.send("project.created", dto);
     }
 
+    public void sendProjectUserAdded(ProjectEventDto dto) {
+        projectKafkaTemplate.send("project.user-added", dto);
+    }
+
     public void sendProjectUpdated(ProjectEventDto dto) {
         projectKafkaTemplate.send("project.updated", dto);
     }
