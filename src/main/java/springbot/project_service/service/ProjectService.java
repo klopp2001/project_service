@@ -11,6 +11,7 @@ import springbot.project_service.model.Projects;
 import springbot.project_service.repository.ProjectMembersRepository;
 import springbot.project_service.repository.ProjectsRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -58,5 +59,9 @@ public class ProjectService {
         user.setRole(role);
 
         return projectMembersRepository.save(user);
+    }
+
+    public Optional<List<ProjectMembers>> getAllProjectsFromUser(Long userId) {
+        return projectMembersRepository.findProjectsByUserId(userId);
     }
 }

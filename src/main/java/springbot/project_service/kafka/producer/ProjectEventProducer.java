@@ -24,11 +24,19 @@ public class ProjectEventProducer {
         projectKafkaTemplate.send("project.updated", dto);
     }
 
+    public void getProjects(ProjectEventDto dto) {
+        projectKafkaTemplate.send("project.get", dto);
+    }
+
     public void sendProjectDeleted(ProjectEventDto dto) {
         projectKafkaTemplate.send("project.deleted", dto);
     }
 
     public void sendNotification(NotificationEventDto dto) {
-        notificationEventDtoKafkaTemplate.send("notification.project", dto);
+        notificationEventDtoKafkaTemplate.send("notifications.client", dto);
+    }
+
+    public void sendNotification(String topic, NotificationEventDto dto) {
+        notificationEventDtoKafkaTemplate.send(topic, dto);
     }
 }
